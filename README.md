@@ -5,7 +5,7 @@
 ![Arquitetura Proposta](USR_GESTAO_HOTEL.png)
 
 <h3>PRINCIPALIDADES PARA MODELAGEM DDL</h3>
-primeiramente para gerenciar um banco de dados precisamos se uma sequencia de itens para nos auxiliar como sequences para gerar ids, usuarios para ler e criar e modelar bases de dados.
+primeiramente para gerenciar um banco de dados precisamos de uma sequencia de itens para nos auxiliar como sequences para gerar ids, usuarios para ler e criar e modelar bases de dados.
 
 **Scripts de criação de `SEQUENCES` e de `usuario`**
 
