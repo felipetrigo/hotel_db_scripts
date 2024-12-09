@@ -5,7 +5,7 @@
 ![Arquitetura Proposta](USR_GESTAO_HOTEL.png)
 
 <h3>PRINCIPALIDADES PARA MODELAGEM DDL</h3>
-primeiramente para gerenciar um banco de dados precisamos de uma sequencia de itens para nos auxiliar como sequences para gerar ids, usuarios para ler e criar e modelar bases de dados.
+Primeiramente para gerenciar um banco de dados precisamos de uma sequencia de itens para nos auxiliar como sequences para gerar ids, usuários para ler e criar e modelar bases de dados.
 
 **Scripts de criação de `SEQUENCES` e de `usuario`**
 
@@ -32,7 +32,7 @@ CREATE SEQUENCE seq_quartos START WITH 1 INCREMENT BY 1;
 
 **Criando a Tabela `clientes`**
 
-precisamos seguir o modelo nos passado então vamos criar a tabela de clientes da forma mais fidedigna possivel utilizando as sequences criadas acima.
+Precisamos seguir o modelo nos passado então vamos criar a tabela de clientes da forma mais fidedigna possível utilizando as sequences criadas acima.
 
 ```sql
 CREATE TABLE clientes (
@@ -46,7 +46,7 @@ CREATE TABLE clientes (
 
 | VARIAVEL       | TIPO | DESCRIÇÃO        |
 |-----------|------|---------------|
-| cliente_id       | numerico    | é um identificador de cliente     |
+| cliente_id       | numérico    | é um identificador de cliente     |
 | nome      | texto    | representa o nome do cliente |
 | email      | texto    | representa o email do cliente |
 | telefone      | texto    | representa o telefone de contato do cliente |
@@ -55,7 +55,7 @@ CREATE TABLE clientes (
 
 **Criando a Tabela `quartos`**
 
-precisamos seguir o modelo nos passado então vamos criar a tabela de quartos da forma mais fidedigna possivel utilizando as sequences criadas acima.
+Precisamos seguir o modelo nos passado então vamos criar a tabela de quartos da forma mais fidedigna possível utilizando as sequences criadas acima.
 
 ```sql
 CREATE TABLE quartos (
@@ -69,16 +69,16 @@ CREATE TABLE quartos (
 
 | VARIAVEL       | TIPO | DESCRIÇÃO        |
 |-----------|------|---------------|
-| quarto_id       | numerico    | é um identificador do quarto     |
+| quarto_id       | numérico    | é um identificador do quarto     |
 | numero      | texto    | representa o numero do quarto |
 | tipo      | texto    | representa o tipo do quarto |
-| preco_diaria      | numerico    | representa o preço cobrado diariamente de estadia do cliente |
+| preco_diaria      | numérico    | representa o preço cobrado diariamente de estadia do cliente |
 
 <br>
 
 **Criando a Tabela `reservas`**
 
-precisamos seguir o modelo nos passado então vamos criar a tabela de reservas da forma mais fidedigna possivel utilizando as sequences criadas acima.
+Precisamos seguir o modelo nos passado então vamos criar a tabela de reservas da forma mais fidedigna possível utilizando as sequences criadas acima.
 
 ```sql
 CREATE TABLE reservas (
@@ -96,9 +96,9 @@ CREATE TABLE reservas (
 
 | VARIAVEL       | TIPO | DESCRIÇÃO        |
 |-----------|------|---------------|
-| reserva_id       | numerico    | é um identificador de reserva    |
-| cliente_id      | numerico    | representa o numero do id do cliente que reservou |
-| quarto_id      | numerico    | representa o numero do id do quarto reservado |
+| reserva_id       | numérico    | é um identificador de reserva    |
+| cliente_id      | numérico    | representa o numero do id do cliente que reservou |
+| quarto_id      | numérico    | representa o numero do id do quarto reservado |
 | data_checkin      | data    | representa a data do check in |
 | data_checkout      | data    | representa a data do check out |
 | status      | texto    | representa o status da reserva |
@@ -112,7 +112,7 @@ CREATE TABLE reservas (
 
 **Criando a Tabela `pedidos`**
 
-precisamos seguir o modelo nos passado então vamos criar a tabela de pedidos da forma mais fidedigna possivel utilizando as sequences criadas acima.
+Precisamos seguir o modelo nos passado então vamos criar a tabela de pedidos da forma mais fidedigna possível utilizando as sequences criadas acima.
 
 ```sql
 CREATE TABLE pedidos (
@@ -128,10 +128,10 @@ CREATE TABLE pedidos (
 
 | VARIAVEL       | TIPO | DESCRIÇÃO        |
 |-----------|------|---------------|
-| pedido_id       | numerico    | é um identificador do numero do pedido    |
-| cliente_id      | numerico    | representa o numero do id do cliente que realizou o pedido |
+| pedido_id       | numérico    | é um identificador do numero do pedido    |
+| cliente_id      | numérico    | representa o numero do id do cliente que realizou o pedido |
 | data_pedido      | data    | representa a data e hora do pedido |
-| total      | numerico    | representa o valor total do pedido |
+| total      | numérico    | representa o valor total do pedido |
 | status      | texto    | representa o pedido |
 
 | CONSTRAINTS       |  DESCRIÇÃO        |
@@ -142,7 +142,7 @@ CREATE TABLE pedidos (
 
 **Criando a Tabela `itens_pedido`**
 
-precisamos seguir o modelo nos passado então vamos criar a tabela de itens_pedido da forma mais fidedigna possivel utilizando as sequences criadas acima.
+Precisamos seguir o modelo nos passado então vamos criar a tabela de itens_pedido da forma mais fidedigna possível utilizando as sequences criadas acima.
 
 ```sql
 CREATE TABLE itens_pedido (
@@ -158,23 +158,23 @@ CREATE TABLE itens_pedido (
 
 | VARIAVEL       | TIPO | DESCRIÇÃO        |
 |-----------|------|---------------|
-| item_pedido_id       | numerico    | é um identificador de um item dentro de um pedido    |
-| pedido_id      | numerico    | representa o numero do id do pedido relacionado ao item |
+| item_pedido_id       | numérico    | é um identificador de um item dentro de um pedido    |
+| pedido_id      | numérico    | representa o numero do id do pedido relacionado ao item |
 | nome_item      | texto    | representa nome do item do pedido |
-| quantidade      | numerico    | representa o total do item dentro do pedido |
+| quantidade      | numérico    | representa o total do item dentro do pedido |
 
 
 | CONSTRAINTS       |  DESCRIÇÃO        |
 |-----------|---------------|
 | fk_pedido       |  no caso da deleção de um pedido é deletado o item relacionado a pedido    |
 
-por fim damos um `commit` para sincronizar com a base.
+Por fim damos um `commit` para sincronizar com a base.
 ```sql
 COMMIT;
 ```
 
 <h3>PRINCIPALIDADES PARA DESENHO DE DML</h3>
-primeiramente para utilizar o schema de dml é necessario entender que deve ser rodado de cima para baixo seguindo a ordem a qual foi escrito e no fim damos commit para sincronizar a base.
+Primeiramente para utilizar o schema de dml é necessário entender que deve ser rodado de cima para baixo seguindo a ordem a qual foi escrito e no fim damos commit para sincronizar a base.
 
 ```sql
 -- Inserir clientes
@@ -226,7 +226,7 @@ VALUES (3, 'Sobremesa', 2, 75.00);
 COMMIT;
 ```
 
-muito obrigado por ler :) abaixo se segue os participantes:
+Muito obrigado por ler :) abaixo se segue os participantes:
 
 | NOME       | RA | EMAIL        |
 |-----------|------|---------------|
